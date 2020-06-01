@@ -1,0 +1,9 @@
+<div class="container">
+  <%= simple_form_for(@boat) do |f| %>
+    <%= f.input :name, :placeholder => "Black Pearl, moteur, 9 pieds", :label => "Nom de votre bateau" %>
+    <%= f.input :description, :placeholder => "Bateau à moteur, capacité jusqu'à 5 personnes, libre tous les week-ends ..." %>
+    <%= f.input :location, :placeholder => "Marseille", :label => "Ville" %>
+    <%= f.input :price_per_day, :placeholder => "150€", :label => "Prix à la journée" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
