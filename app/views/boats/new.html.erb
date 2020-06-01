@@ -4,6 +4,7 @@
     <%= f.input :description, :placeholder => "Bateau à moteur, capacité jusqu'à 5 personnes, libre tous les week-ends ..." %>
     <%= f.input :location, :placeholder => "Marseille", :label => "Ville" %>
     <%= f.input :price_per_day, :placeholder => "150€", :label => "Prix à la journée" %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>

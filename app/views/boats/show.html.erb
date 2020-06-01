@@ -2,4 +2,8 @@
 <p><%= @boat.description %></p>
 <p><%= @boat.location %></p>
 <p><%= @boat.price_per_day %>€</p>
+<% if @boat.photo.attached? %>
+  <%= cl_image_tag @boat.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+<%= link_to "Retour", boats_path %>
 <button id="book">Réserver le bateau</button>

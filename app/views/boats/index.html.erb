@@ -1,5 +1,8 @@
 <% @boats.each do |boat| %>
   <div class="card">
+  	<% if boat.photo.attached? %>
+  	  <%= cl_image_tag boat.photo.key, height: 300, width: 400, crop: :fill %>
+  	<% end %>
   	<p><%= link_to boat.name, boat_path(boat.id) %></p>
   </div>
 <% end %>
