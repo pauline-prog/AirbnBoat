@@ -1,7 +1,7 @@
-<%= simple_form_for @booking, url: boat_bookings_path(@boat), remote: true, method: :post do |f| %>
+<%= simple_form_for([boat, booking]) do |f| %>
   <%= f.input :start_date, :label => "Commentaire", class: "w-100" %>
   <%= f.input :end_date %>
-  <%= f.button :submit, class: "btn btn-success w-100", type: "button", data: {target: "#confirmBooking", toggle: "modal"} %>
+  <%= f.button :submit, class: "btn btn-success w-100", data: {target: "#confirmBooking", toggle: "modal"} %>
 <% end %>
 
 <!-- Modal -->
