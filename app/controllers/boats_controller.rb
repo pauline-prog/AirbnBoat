@@ -5,6 +5,7 @@ class BoatsController < ApplicationController
 
   def show
   	@boat = Boat.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -23,6 +24,20 @@ class BoatsController < ApplicationController
   	else
   	  render :new
   	end
+  end
+
+  def edit
+    @boat = Boat.find(params[:id])
+  end
+
+  def update
+    @boat.update(boat_params)
+    redirect_to boat_path(@boat.id)
+  end
+
+  def destroy
+    @boat.destroy
+    redirect_to boats_path # A CHANGER POUR DASHBOARD
   end
 
   private
