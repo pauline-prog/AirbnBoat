@@ -4,12 +4,35 @@
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
-  opacity: 0.6;
+  opacity: 0.7;
   transition: opacity 0.3s ease;
-  box-shadow: 5px;
 }
 
 .btn-ghost:hover {
   opacity: 1;
   color: white;
+}
+
+#rechercher {
+  color: white;
+  background-color: #ff856d;
+  font-weight: lighter;
+  transition: background-color 0.3s ease;
+}
+
+#rechercher:hover {
+  opacity: 1;
+  color: white;
+  background-color: #EE5535;
+}
+
+.category {
+  color: white;
+  font-weight: bold;
+}
+
+.category:hover {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
 }

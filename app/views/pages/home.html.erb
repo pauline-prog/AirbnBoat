@@ -47,7 +47,11 @@
         <div class="col">
           <input type="icon-transport-boat" id="Bateau_type" class="form-control" placeholder='Type de bateau'>
         </div>
-        <button type="submit" class="btn" id='rechercher'>Rechercher</button>
+        <%= link_to boats_path do %>
+          <button type="submit" class="btn" id='rechercher'>
+            Rechercher
+          </button>
+        <% end %>
       </div>
     </form>
   </div>
@@ -58,15 +62,21 @@
   <h2 class="child-to-show">Bateaux disponibles</h2>
 </div>
 <div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(assets/voilier.png)">
-    Voilier
-  </div>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(assets/yacht.png)">
-    Yacht
-  </div>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(assets/catamaran.png)">
-    Catamaran
-  </div>
+  <%= link_to boats_path do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(assets/voilier.png)">
+      Voilier
+    </div>
+  <% end %>
+  <%= link_to boats_path do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(assets/yacht.png)">
+      Yacht
+    </div>
+  <% end %>
+  <%= link_to boats_path do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(assets/catamaran.png)">
+      Catamaran
+    </div>
+  <% end %>
 </div>
 
 <div class="child">
@@ -98,7 +108,7 @@
 </div>
 <br>
 <div class="child">
-  <%= link_to "Louez un bateau", "#", class: "btn btn-ghost" %>
+  <%= link_to "Louez un bateau", boats_path, class: "btn btn-ghost" %>
 </div>
 
 <br>
@@ -145,15 +155,21 @@
   <h2 class="child-to-show">Destinations du moment</h2>
 </div>
 <div class="cards">
-  <div class="card-category" style="background-image: url(assets/marseille.jpg)">
-    Marseille
-  </div>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(assets/guethary.jpg)">
-    Guéthary
-  </div>
-  <div class="card-category" style="background-image: url(assets/plouzane.jpg)">
-    Plouzané
-  </div>
+  <%= link_to boats_path do %>
+    <div class="card-category" style="background-image: url(assets/marseille.jpg)">
+      Marseille
+    </div>
+  <% end %>
+  <%= link_to boats_path do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(assets/guethary.jpg)">
+      Guéthary
+    </div>
+  <% end %>
+  <%= link_to boats_path do %>
+    <div class="card-category" style="background-image: url(assets/plouzane.jpg)">
+      Plouzané
+    </div>
+  <% end %>
 </div>
 
 <div class="footer">
