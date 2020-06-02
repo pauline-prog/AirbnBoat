@@ -1,3 +1,4 @@
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag "airbnboatlogo2.png" %>
@@ -76,3 +77,12 @@
     This footer is made with <i class="fas fa-heart"></i> at home
   </div>
 </div>
+
+<% @boats.each do |boat| %>
+  <div class="card">
+  	<% if boat.photo.attached? %>
+  	  <%= cl_image_tag boat.photo.key, height: 300, width: 400, crop: :fill %>
+  	<% end %>
+  	<p><%= link_to boat.name, boat_path(boat.id) %></p>
+  </div>
+<% end %>

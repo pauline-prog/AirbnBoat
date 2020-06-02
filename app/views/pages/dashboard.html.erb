@@ -1,0 +1,9 @@
+<% @bookings.each do |booking| %>
+  <div class="card">
+  	  <p><%= booking.boat.name %>
+  	  réservé par <%= booking.user.full_name %>
+  	  propriétaire <%= booking.boat.user.full_name %>
+  	  <% days = booking.start_date - booking.end_date %>
+  	  prix total <%= booking.boat.price_per_day * days %></p>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<%= simple_form_for([boat, booking]) do |f| %>
+  <%= f.input :start_date, :label => "Commentaire", class: "w-100" %>
+  <%= f.input :end_date %>
+  <%= f.button :submit, class: "btn btn-success w-100", data: {target: "#confirmBooking", toggle: "modal"} %>
+<% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmBooking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p class="p-3">Votre demande a bien été envoyée ! Vous recevrez une notification dès que le propriétaire aura répondu à votre demande.</p>
+      </div>
+      <div class="modal-footer">
+      	<%= link_to "Voir les autres bateaux", boats_path, class: "btn btn-primary" %>
+      	<%= link_to "Mon dashboard", dashboard_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
