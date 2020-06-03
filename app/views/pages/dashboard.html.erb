@@ -1,9 +1,38 @@
+<p>Mes réservations</p>
 <% @bookings.each do |booking| %>
   <div class="card">
-  	  <p><%= booking.boat.name %>
+    <p><%= booking.boat.name %>
   	  réservé par <%= booking.user.full_name %>
   	  propriétaire <%= booking.boat.user.full_name %>
-  	  <% days = booking.start_date - booking.end_date %>
+  	  <% days = (booking.end_date.to_date - booking.start_date.to_date).to_i %>
   	  prix total <%= booking.boat.price_per_day * days %></p>
+    <% if booking.boat.photo.attached? %>
+      <%= cl_image_tag booking.boat.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  	  <% if booking.accepted %>
+  	   <p>statut: validé</p>
+  	   <% elsif booking.canceled %>
+  	   <p>statut: refusé</p>
+  	   <% else %>
+  	   <p>statut: en attente</p>
+  	   <% end %>
+  	  
   </div>
 <% end %>
+<p>Mes notifications</p>
+<% @booking_request.each do |booking_r| %>
+    <% if booking_r.canceled == false %>
+  	 <p>Vous avez une nouvelle demande de réservation pour votre bateau <%= booking_r.boat.name %>
+  	  réservé par <%= booking_r.user.full_name %>
+  	  propriétaire <%= booking_r.boat.user.full_name %>
+  	  <% days = (booking_r.end_date.to_date - booking_r.start_date.to_date).to_i %>
+  	  prix total <%= booking_r.boat.price_per_day * days %></p>
+  	  <%= link_to "Confirmer", booking_path(booking_r.id), method: :patch, class: "btn btn-primary" %>
+  	  <%= link_to "Refuser", update_destroy_path(booking_r.id), method: :patch, class: "btn btn-primary" %>
+      <% end %>
+<% end %>
+<br>
+<br>
+<%= link_to "Ajouter une annonce", new_boat_path, class: "btn btn-primary" %>
+
+

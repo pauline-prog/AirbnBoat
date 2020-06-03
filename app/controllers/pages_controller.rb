@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-  	@bookings = Booking.where(user: current_user)
+  	@bookings = current_user.bookings
+  	@boats = current_user.boats
+  	@booking_request = Booking.where(boat_id: @boats.pluck(:id))
   end
 end
