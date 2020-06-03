@@ -1,3 +1,33 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "airbnboatlogo2.png" %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active louermonbateau">
+        <%= link_to "Louer mon bateau", dashboard_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item louermonbateau">
+        <%= link_to "Se connecter", dashboard_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <%= image_tag "/assets/woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Mon profil", dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Mes bateaux", dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Mes réservations", dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Notifications", dashboard_path, class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <p>Mes réservations</p>
 <% @bookings.each do |booking| %>
   <div class="card">
@@ -16,7 +46,7 @@
   	   <% else %>
   	   <p>statut: en attente</p>
   	   <% end %>
-  	  
+
   </div>
 <% end %>
 <p>Mes notifications</p>
