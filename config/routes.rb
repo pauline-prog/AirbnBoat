@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :boats do
   	resources :bookings, only: [:new, :create]
   end
+  resources :bookings, only: [:update]
+  patch 'update_canceled/:id', to: 'bookings#update_destroy', as: 'update_destroy'
 end
