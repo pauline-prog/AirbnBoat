@@ -1,0 +1,28 @@
+.card_boat {
+  padding-top: 150px;
+  padding-bottom: 50px;
+}
+
+.m-center {
+  margin: 0 auto;
+  width: 570px;
+}
+
+.bg-boat {
+  background-image: url(https://res.cloudinary.com/dpwr92z8p/image/upload/v1591261878/boatview1_wqxb7l.jpg);
+  background-size: cover;
+}
+
+.btn-treehouse {
+  color: white;
+  padding: 9px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  background: #FF7F50;
+}
+.btn-treehouse:hover {
+  opacity: 2;
+  background: #FF6347;
+  text-decoration: none;
+  color: white;
+}
