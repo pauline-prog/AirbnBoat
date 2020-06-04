@@ -36,10 +36,13 @@
   <div class="row card_boat">
     <div class="m-center bg-white border p-4">
       <%= simple_form_for(@boat) do |f| %>
-        <%= f.input :name, :placeholder => "Black Pearl, moteur, 9 pieds", :label => "Nom de votre bateau", input_html: { class: "bg-light" } %>
+        <%= f.input :name, :placeholder => "Black Pearl", :label => "Nom de votre bateau", input_html: { class: "bg-light" } %>
         <%= f.input :description, :placeholder => "Bateau à moteur, capacité jusqu'à 5 personnes, libre tous les week-ends ...", input_html: { class: "bg-light" } %>
         <%= f.input :location, :placeholder => "Marseille", :label => "Ville", input_html: { class: "bg-light" } %>
-        <%= f.input :price_per_day, :placeholder => "150€", :label => "Prix à la journée", input_html: { class: "bg-light" } %>
+        <%= f.input :price_per_day, :placeholder => "150€", :label => "Prix à la journée", input_html: { class: "bg-light mb-4" } %>
+        <%= label_tag :captain, "Capitaine à bord ?", class: "coche"%>
+        <%= f.check_box :captain %>
+        <%= f.input :category, :placeholder => "Bateau à moteur", :label => "Type de bateau", input_html: { class: "bg-light" } %>
         <%= f.input :photo, as: :file, input_html: { class: "mb-4" } %>
         <%= f.submit "Submit", class: "btn btn-treehouse mb-5" %>
       <% end %>
@@ -57,18 +60,6 @@
   <div class="footer-copyright">
     This footer is made with <i class="fas fa-heart"></i> at home
   </div>
-  
-<div class="container">
-  <%= simple_form_for(@boat) do |f| %>
-    <%= f.input :name, :placeholder => "Black Pearl", :label => "Nom de votre bateau" %>
-    <%= f.input :description, :placeholder => "Bateau à moteur, capacité jusqu'à 5 personnes, libre tous les week-ends ..." %>
-    <%= f.input :location, :placeholder => "Marseille", :label => "Ville" %>
-    <%= f.input :price_per_day, :placeholder => "150€", :label => "Prix à la journée" %>
-    <%= label_tag :captain, "Capitaine à bord ?" %>
-    <%= f.check_box :captain %>
-    <%= f.input :category, :placeholder => "Bateau à moteur", :label => "Type de bateau" %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
-  <%= link_to "Retour", dashboard_path, class: "btn btn-primary" %>
 </div>
+
+
