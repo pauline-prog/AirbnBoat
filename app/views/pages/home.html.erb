@@ -10,10 +10,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active louermonbateau">
-        <%= link_to "Louer mon bateau", dashboard_path, class: "nav-link" %>
+        <%= link_to "Louer mon bateau", new_boat_path, class: "nav-link" %>
       </li>
       <li class="nav-item louermonbateau">
-        <%= link_to "Se connecter", dashboard_path, class: "nav-link" %>
+        <% if user_signed_in? %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, method: "delete", class: "nav-link" %>
+        <% else %>
+            <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+        <% end %>
       </li>
       <li class="nav-item dropdown">
         <%= image_tag "/assets/woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

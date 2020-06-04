@@ -1,11 +1,36 @@
 class BoatsController < ApplicationController
   def index
-    if params[:city_query].present? || params[:name_query]
+    if params[:city_query].present? || params[:name_query].present?
       # sql_query = "location ILIKE :city_query OR name ILIKE :name_query"
       # @boats = Boat.where(sql_query, city_query: "%#{params[:city_query]}%", name_query: "%#{params[:name_query]}%")
       @boats = Boat.search_by_location_and_name([params[:city_query], params[:name_query]])
     else
       @boats = Boat.all
+    end
+
+    if params[:price_50].present?
+      @boats = @boats.where("price_per_day <= ?", 50)
+    end
+    if params[:price_100].present?
+      @boats = @boats.where("price_per_day >= ? and price_per_day <= ?", 50, 100)
+    end
+    if params[:price_200].present?
+      @boats = @boats.where("price_per_day >= ? and price_per_day <= ?", 100, 200)
+    end
+    if params[:price_300].present?
+      @boats = @boats.where("price_per_day >= ? and price_per_day <= ?", 200, 300)
+    end
+    if params[:price_400].present?
+      @boats = @boats.where("price_per_day >= ? and price_per_day <= ?", 300, 400)
+    end
+    if params[:price_500].present?
+      @boats = @boats.where("price_per_day >= ? and price_per_day <= ?", 400, 500)
+    end
+    if params[:price_more_than_500].present?
+      @boats = @boats.where("price_per_day >= ?", 500)
+    end
+    if params[:category].present?
+      @boats = @boats.where(category:params[:category])
     end
   end
 
@@ -49,7 +74,7 @@ class BoatsController < ApplicationController
   private
 
   def boat_params
-  	params.require(:boat).permit(:name, :description, :location, :price_per_day, :photo)
+  	params.require(:boat).permit(:name, :description, :location, :price_per_day, :photo, :category, :captain)
   end
 
   def booking_params
