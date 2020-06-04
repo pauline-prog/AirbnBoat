@@ -177,21 +177,27 @@
 
   <div class="announces">
     <% @boats.each do |boat| %>
-      <div class="announce">
-        <img src="assets/annonce1.png" class="img-rounded">
-        <div class="announce-info">
-          <div>
-            <h2><%= link_to boat.name, boat_path(boat.id) %></h2>
-            <div class='d-inline-block'>
-              <img src="/assets/iconlocation.png" width='25'>
+      <%= link_to boat_path(boat.id) do %>
+        <div class="announce">
+          <% if boat.photo.attached? %>
+            <%= cl_image_tag boat.photo.key, height: 200, width: 400, crop: :fill %>
+          <% else %>
+            <img src="/assets/nophoto.png">
+          <% end %>
+          <div class="announce-info">
+            <div>
+              <h2><%= boat.name %></h2>
+              <div class='d-inline-block'>
+                <img src="/assets/iconlocation.png" width='25'>
+              </div>
+              <div class='d-inline-block'>
+                <p><%= boat.location %></p>
+              </div>
             </div>
-            <div class='d-inline-block'>
-              <p><%= boat.location %></p>
-            </div>
+            <h2 class="announce-pricing"><%= boat.price_per_day %> €</h2>
           </div>
-          <h2 class="announce-pricing"><%= boat.price_per_day %> €</h2>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

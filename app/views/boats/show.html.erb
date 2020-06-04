@@ -31,6 +31,8 @@
 <div class="container2">
   <% if @boat.photo.attached? %>
     <%= cl_image_tag @boat.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+    <img src="/assets/nophoto.png" width="320">
   <% end %>
   <div class="Productview_container">
     <div class="row">
