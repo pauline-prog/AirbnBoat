@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "airbnboatlogo2.png" %>
@@ -10,19 +9,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Louer mon bateau", "#", class: "nav-link"%>
+      <li class="nav-item active louermonbateau">
+        <%= link_to "Louer mon bateau", dashboard_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Se connecter", "#", class: "nav-link" %>
+      <li class="nav-item louermonbateau">
+        <%= link_to "Se connecter", dashboard_path, class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= image_tag "/assets/woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Mon profil", "#", class: "dropdown-item" %>
-          <%= link_to "Mes bateaux", "#", class: "dropdown-item" %>
-          <%= link_to "Mes réservations", "#", class: "dropdown-item" %>
-          <%= link_to "Notifications", "#", class: "dropdown-item" %>
+          <%= link_to "Mon profil", dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Mes bateaux", dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Mes réservations", dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Notifications", dashboard_path, class: "dropdown-item" %>
         </div>
       </li>
     </ul>
@@ -30,27 +29,27 @@
 </div>
 
 <div class="bannerindex">
-  <div class="container2">
+  <div class="containerindex">
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <input type="text" class="form-control border-light" placeholder="Ville de départ">
+          <input type="text" class="form-control border-light" placeholder="Ville de départ" style="background-image:url(assets/iconlocation.png);background-position:left;background-repeat:no-repeat;padding-left:30px">
         </div>
         <div class="form-group col-md-1">
-          <input type="text" class="form-control border-light" placeholder="Du">
+          <input type="text" class="form-control border-light" placeholder="Du" style="background-image:url(assets/iconstart.png);background-position:left;background-repeat:no-repeat;padding-left:38px">
         </div>
         <div class="form-group col-md-1">
-          <input type="text" class="form-control border-light" placeholder="Au">
+          <input type="text" class="form-control border-light" placeholder="Au" style="background-image:url(assets/iconend.png);background-position:left;background-repeat:no-repeat;padding-left:38px">
         </div>
         <div class="form-group col-md-3">
-          <select type="text" class="form-control border-light" placeholder="Type de bateau">
+          <select type="text" class="form-control border-light" placeholder="Type de bateau" style="color:#6b757e">
             <option selected>Type de bateau</option>
-            <option selected>Voilier</option>
-            <option selected>Bateau à moteur</option>
-            <option selected>Catamaran</option>
-            <option selected>Semi-rigide</option>
-            <option selected>Péniche</option>
-            <option selected>Yacht</option>
+            <option>Voilier</option>
+            <option>Bateau à moteur</option>
+            <option>Catamaran</option>
+            <option>Semi-rigide</option>
+            <option>Péniche</option>
+            <option>Yacht</option>
           </select>
         </div>
       </div>
@@ -183,7 +182,12 @@
         <div class="announce-info">
           <div>
             <h2><%= link_to boat.name, boat_path(boat.id) %></h2>
-            <p><%= boat.location %></p>
+            <div class='d-inline-block'>
+              <img src="/assets/iconlocation.png" width='25'>
+            </div>
+            <div class='d-inline-block'>
+              <p><%= boat.location %></p>
+            </div>
           </div>
           <h2 class="announce-pricing"><%= boat.price_per_day %> €</h2>
         </div>
