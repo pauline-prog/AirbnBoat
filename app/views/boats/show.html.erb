@@ -41,16 +41,19 @@
   <div class="Productview_container">
     <div class="row">
       <div class="col-12 col-lg-6">
-        <div class="bg-white border p-4">
-          <h2 class="text-underline"> <%= @boat.name %> </h2><br>
+        <div class="bg-white border p-4 box-shadow-rounded">
+          <h2 class="text-underline"><%= @boat.name %></h2>
+
+          <br>
+
           <p><%= @boat.description %></p>
           <p><%= @boat.location %></p>
           <%= link_to "Retour", boats_path %>
         </div>
       </div>
       <div class="col-12 col-lg-6">
-        <div class="bg-white border p-4">
-          <p><%= @boat.price_per_day %>€</p>
+        <div class="bg-white border p-4 box-shadow-rounded">
+          <p>À partir de <%= @boat.price_per_day %> € par jour</p>
           <%= render 'bookings/new', boat: @boat, booking: @booking %>
         </div>
       </div>
