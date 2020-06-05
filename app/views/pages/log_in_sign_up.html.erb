@@ -1,2 +1,58 @@
-<%= render "devise/sessions/new" %>
-<%= render new_user_registration_path %>
+<div class="main">
+  <div class="login">
+    <h2>Log in</h2>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+​
+      <div class="form-actions">
+        <div class="links">
+          <%= render "devise/shared/links" %>
+        </div>
+        <br>
+        <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+​
+  </div>
+  <div class="separation"></div>
+  <div class="register">
+  <h2>Register</h2>
+​
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+​
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :full_name,
+                required: true,
+                autofocus: true,
+                input_html: {autocomplete: "username"} %>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+<!--     <%= f.input :photo, as: :file%>
+ -->  </div>
+​
+  <div class="form-actions">
+    <%= f.button :submit, "Create account", class: "btn btn-primary"  %>
+  </div>
+<% end %>
+</div>
+​
+</div>
