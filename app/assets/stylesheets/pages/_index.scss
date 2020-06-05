@@ -27,6 +27,7 @@
 
 .content {
   display: flex;
+  margin-top: -70px;
 }
 
 #map {
@@ -149,4 +150,8 @@
 
 .pagination a {
   color: black;
+}
+
+.btn-center {
+  text-align: center;
 }

@@ -20,13 +20,9 @@
         <% end %>
       </li>
       <li class="nav-item dropdown">
-        <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Mon profil", dashboard_path, class: "dropdown-item" %>
-          <%= link_to "Mes bateaux", dashboard_path, class: "dropdown-item" %>
-          <%= link_to "Mes réservations", dashboard_path, class: "dropdown-item" %>
-          <%= link_to "Notifications", dashboard_path, class: "dropdown-item" %>
-        </div>
+        <%= link_to dashboard_path do %>
+          <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large" %>
+        <% end %>
       </li>
     </ul>
   </div>
