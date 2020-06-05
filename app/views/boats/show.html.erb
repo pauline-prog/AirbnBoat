@@ -20,7 +20,7 @@
         <% end %>
       </li>
       <li class="nav-item dropdown">
-        <%= image_tag "/assets/woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Mon profil", dashboard_path, class: "dropdown-item" %>
           <%= link_to "Mes bateaux", dashboard_path, class: "dropdown-item" %>
@@ -36,7 +36,7 @@
   <% if @boat.photo.attached? %>
     <%= cl_image_tag @boat.photo.key, height: 300, width: 400, crop: :fill %>
   <% else %>
-    <img src="/assets/nophoto.png" width="320">
+    <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/nophoto_sjcdhs.png" width="320">
   <% end %>
   <div class="Productview_container">
     <div class="row">
@@ -57,13 +57,13 @@
           <%= render 'bookings/new', boat: @boat, booking: @booking %>
         </div>
       </div>
-        <p><%= @boat.category %>€</p>
-        <%= render 'bookings/new', boat: @boat, booking: @booking %>
     </div>
   </div>
 
 </div>
-<br>
+
+<br><br>
+
 <div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -71,6 +71,6 @@
     <a href="#"><i class="fab fa-twitter"></i></a>
   </div>
   <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at home
+    © 2020 Airbnboat, Inc. Made with <i class="fas fa-heart"></i> at home
   </div>
 </div>
