@@ -41,22 +41,14 @@
   <div class="container">
     <h1>Rejoignez la communauté et prenez le large</h1>
     <p>Plus de 35 000 bateaux de particuliers à louer au meilleur prix</p>
-    <br>
       <!-- [...] -->
-  <%= form_tag boats_path, method: :get do %>
-  <%= text_field_tag :city_query,
-    params[:city_query],
-    class: "form-control",
-    placeholder: "Marseille"
-  %>
-  <%= text_field_tag :name_query,
-    params[:name_query],
-    class: "form-control",
-    placeholder: "Bateau à moteur"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-<!-- the list of movies -->
+    <%= form_tag boats_path, class: "form-inline", method: :get do %>
+    <div class="fhomepage">
+      <%= text_field_tag :city_query, params[:city_query], class: "form-control1", placeholder: "Marseille" %>
+      <%= text_field_tag :name_query, params[:name_query], class: "form-control2", placeholder: "Bateau à moteur" %>
+      <%= submit_tag "Search", class: "btn" %>
+    <% end %>
+    </div>
   </div>
 </div>
 
