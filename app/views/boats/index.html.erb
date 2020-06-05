@@ -10,10 +10,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active louermonbateau">
-        <%= link_to "Louer mon bateau", dashboard_path, class: "nav-link" %>
+        <%= link_to "Louer mon bateau", new_boat_path, class: "nav-link" %>
       </li>
       <li class="nav-item louermonbateau">
-        <%= link_to "Se connecter", dashboard_path, class: "nav-link" %>
+        <% if user_signed_in? %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, method: "delete", class: "nav-link" %>
+        <% else %>
+            <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+        <% end %>
       </li>
       <li class="nav-item dropdown">
         <%= image_tag "/assets/woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -30,30 +34,6 @@
 
 <div class="bannerindex">
   <div class="containerindex">
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <input type="text" class="form-control border-light" placeholder="Ville de départ" style="background-image:url(assets/iconlocation.png);background-position:left;background-repeat:no-repeat;padding-left:30px">
-        </div>
-        <div class="form-group col-md-1">
-          <input type="text" class="form-control border-light" placeholder="Du" style="background-image:url(assets/iconstart.png);background-position:left;background-repeat:no-repeat;padding-left:38px">
-        </div>
-        <div class="form-group col-md-1">
-          <input type="text" class="form-control border-light" placeholder="Au" style="background-image:url(assets/iconend.png);background-position:left;background-repeat:no-repeat;padding-left:38px">
-        </div>
-        <div class="form-group col-md-3">
-          <select type="text" class="form-control border-light" placeholder="Type de bateau" style="color:#6b757e">
-            <option selected>Type de bateau</option>
-            <option>Voilier</option>
-            <option>Bateau à moteur</option>
-            <option>Catamaran</option>
-            <option>Semi-rigide</option>
-            <option>Péniche</option>
-            <option>Yacht</option>
-          </select>
-        </div>
-      </div>
-    </form>
   </div>
 </div>
 
@@ -107,7 +87,60 @@
     <div class="card-header-body border-light">
       <div class="card-header">Prix</div>
       <div class="card-body">
-        <div class="custom-control custom-checkbox">
+          <%= form_tag boats_path, method: :get do %>
+            <%= text_field_tag :city_query,
+              params[:city_query],
+              class: "form-control",
+              placeholder: "Marseille"
+          %>
+          <%= text_field_tag :name_query,
+            params[:name_query],
+            class: "form-control",
+            placeholder: "Bateau à moteur"
+          %>
+         <%= label_tag :price_50, "Moins de 50€" %>
+         <%= check_box_tag :price_50,
+            params[:price_50],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :price_100, "Entre 50 et 100€" %>
+          <%= check_box_tag :price_100,
+            params[:price_100],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :price_200, "Entre 100 et 200€" %>
+          <%= check_box_tag :price_200,
+            params[:price_200],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :price_300, "Entre 200 et 300€" %>
+          <%= check_box_tag :price_300,
+            params[:price_300],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :price_400, "Entre 300 et 400€" %>
+          <%= check_box_tag :price_400,
+            params[:price_400],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :price_500, "Entre 400 et 500€" %>
+          <%= check_box_tag :price_500,
+            params[:price_500],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :price_more_than_500, "Plus de 500€" %>
+          <%= check_box_tag :price_more_than_500,
+            params[:price_more_than_500],
+            class: "custom-control-input"
+          %>
+          <%= label_tag :category, "Entre 400 et 500€" %>
+          <%= text_field_tag :category,
+              params[:category],
+              class: "form-control",
+              placeholder: "Bateau à moteur"
+          %>
+          <%= submit_tag "Filter", class: "btn btn-primary" %>        <% end %>
+        <!-- <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="customCheck7">
           <label class="custom-control-label" for="customCheck7"> Moins de 50 €</label>
         </div>
@@ -142,7 +175,7 @@
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="customCheck15">
           <label class="custom-control-label" for="customCheck15"> Plus de 1000 €</label>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -202,17 +235,19 @@
   </div>
 </div>
 
+
 <div>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
       <li class="page-item"><a class="page-link" href="#">1</a></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
     </ul>
   </nav>
 </div>
+
 
 <div class="footer">
   <div class="footer-links">

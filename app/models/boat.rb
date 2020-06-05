@@ -6,4 +6,11 @@ class Boat < ApplicationRecord
   validates :description, presence: true
   validates :location, presence: true
   validates :price_per_day, presence: true
+  validates :category, presence: true
+  include PgSearch::Model
+  pg_search_scope :search_by_location_and_name,
+    against: [ :location, :name ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

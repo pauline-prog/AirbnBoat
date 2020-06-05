@@ -1,5 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "show";
+@import "new";
 
 .bannerindex {
   height: 100px;
@@ -136,4 +138,15 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+}
+
+.pagination {
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  padding-bottom: 50px;
+}
+
+.pagination a {
+  color: black;
 }

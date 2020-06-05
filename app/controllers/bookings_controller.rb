@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   	@booking.user = current_user
   	@booking.boat = Boat.find(params[:boat_id])
     if @booking.save
-  	  redirect_to boat_path(params[:boat_id])
+  	  redirect_to boat_path(params[:boat_id]), notice: "Votre réservation a bien été acceptée"
   	else
   	  redirect_to boat_path(params[:boat_id])
   	end
