@@ -20,7 +20,15 @@
         <% end %>
       </li>
       <li class="nav-item dropdown">
-        <%= image_tag "/assets/woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% if current_user && current_user.photo.attached? %>
+          <%= link_to dashboard_path do %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+          <% else %>
+          <%= link_to dashboard_path do %>
+             <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+          <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Mon profil", dashboard_path, class: "dropdown-item" %>
           <%= link_to "Mes bateaux", dashboard_path, class: "dropdown-item" %>
@@ -41,121 +49,78 @@
   <div class="card-style">
 
     <div class="card-header-body border-light">
-      <div class="card-header">Avec ou sans capitaine</div>
+      <div class="card-header">Que recherchez-vous ?</div>
       <div class="card-body">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck21">
-          <label class="custom-control-label" for="customCheck21"> Avec capitaine</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck22">
-          <label class="custom-control-label" for="customCheck22"> Sans capitaine</label>
-        </div>
-      </div>
-    </div>
 
-    <div class="card-header-body border-light">
-      <div class="card-header">Type de bateau</div>
-      <div class="card-body">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label" for="customCheck1"> Voilier</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck2">
-          <label class="custom-control-label" for="customCheck2"> Bateau à moteur</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck3">
-          <label class="custom-control-label" for="customCheck3"> Catamaran</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck4">
-          <label class="custom-control-label" for="customCheck4"> Semi-rigide</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck5">
-          <label class="custom-control-label" for="customCheck5"> Péniche</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck6">
-          <label class="custom-control-label" for="customCheck6"> Yacht</label>
-        </div>
-      </div>
-    </div>
+        <p><strong>Annonce</strong></p>
+        <%= text_field_tag :name_query,
+          params[:name_query],
+          class: "form-control",
+          placeholder: "Bateau à moteur"
+        %>
 
-    <div class="card-header-body border-light">
-      <div class="card-header">Filtrer votre recherche</div>
-      <div class="card-body">
-          <%= form_tag boats_path, method: :get do %>
-            <%= text_field_tag :city_query,
-              params[:city_query],
-              class: "form-control",
-              placeholder: "Marseille"
-          %>
-          <%= text_field_tag :name_query,
-            params[:name_query],
+        <br>
+
+        <p><strong>Lieu</strong></p>
+        <%= form_tag boats_path, method: :get do %>
+          <%= text_field_tag :city_query,
+            params[:city_query],
             class: "form-control",
-            placeholder: "Nom du bateau"
-          %>
-            <%= label_tag :category, "Entre 400 et 500€" %>
-            <%= text_field_tag :category,
-                params[:category],
-                class: "form-control",
-                placeholder: "Bateau à moteur"
-            %>
-          <div class="custom-control custom-checkbox">
-           <%= label_tag :price_50, "Moins de 50€" %>
-           <%= check_box_tag :price_50,
-              params[:price_50],
-              class: "custom-control-input"
-            %>
-         </div>
-          <div class="custom-control custom-checkbox">
-          <%= label_tag :price_100, "Entre 50 et 100€" %>
-          <%= check_box_tag :price_100,
-            params[:price_100],
-            class: "custom-control-input"
-          %>
-          </div>
-          <div class="custom-control custom-checkbox">
-          <%= label_tag :price_200, "Entre 100 et 200€" %>
-          <%= check_box_tag :price_200,
-            params[:price_200],
-            class: "custom-control-input"
-          %>
-          </div>
-          <div class="custom-control custom-checkbox">
-          <%= label_tag :price_300, "Entre 200 et 300€" %>
-          <%= check_box_tag :price_300,
-            params[:price_300],
-            class: "custom-control-input"
-          %>
-          </div>
-          <div class="custom-control custom-checkbox">
-          <%= label_tag :price_400, "Entre 300 et 400€" %>
-          <%= check_box_tag :price_400,
-            params[:price_400],
-            class: "custom-control-input"
-          %>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <%= label_tag :price_500, "Entre 400 et 500€" %>
-            <%= check_box_tag :price_500,
-              params[:price_500],
-              class: "custom-control-input"
-            %>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <%= label_tag :price_more_than_500, "Plus de 500€" %>
-            <%= check_box_tag :price_more_than_500,
-              params[:price_more_than_500],
-              class: "custom-control-input"
-            %>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <%= submit_tag "Rechercher", class: "btn btn-primary" %>        <% end %>
-          </div>
+            placeholder: "Marseille"
+        %>
+
+        <br>
+
+        <strong><%= label_tag :category, "Type de bateau" %></strong>
+        <%= text_field_tag :category,
+          params[:category],
+          class: "form-control",
+          placeholder: "Bateau à moteur"
+        %>
+
+        <br>
+
+        <p><strong>Prix</strong></p>
+        <%= check_box_tag :price_50,
+          params[:price_50],
+          class: "custom-control-input" %>
+        <%= label_tag :price_50, "Moins de 50€" %>
+        <br>
+        <%= check_box_tag :price_100,
+          params[:price_100],
+          class: "custom-control-input" %>
+        <%= label_tag :price_100, "Entre 50 et 100€" %>
+        <br>
+        <%= check_box_tag :price_200,
+          params[:price_200],
+          class: "custom-control-input" %>
+        <%= label_tag :price_200, "Entre 100 et 200€" %>
+        <br>
+        <%= check_box_tag :price_300,
+          params[:price_300],
+          class: "custom-control-input" %>
+        <%= label_tag :price_300, "Entre 200 et 300€" %>
+        <br>
+        <%= radio_button_tag :price_400,
+          params[:price_400],
+          class: "custom-control-input" %>
+        <%= label_tag :price_400, "Entre 300 et 400€" %>
+        <br>
+        <%= check_box_tag :price_500,
+          params[:price_500],
+          class: "custom-control-input" %>
+        <%= label_tag :price_500, "Entre 400 et 500€" %>
+        <br>
+        <%= check_box_tag :price_more_than_500,
+          params[:price_more_than_500],
+          class: "custom-control-input" %>
+        <%= label_tag :price_more_than_500, "Plus de 500€" %>
+
+        <br><br>
+
+        <div class="btn-center">
+          <%= submit_tag "OK", class: "btn btn-ghost" %><% end %>
+        </div>
         <!-- <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="customCheck7">
           <label class="custom-control-label" for="customCheck7"> Moins de 50 €</label>
@@ -196,6 +161,20 @@
     </div>
 
     <div class="card-header-body border-light">
+      <div class="card-header">Avec ou sans capitaine ?</div>
+      <div class="card-body">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck21">
+          <label class="custom-control-label" for="customCheck21"> Avec capitaine</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck22">
+          <label class="custom-control-label" for="customCheck22"> Sans capitaine</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header-body border-light">
       <div class="card-header">Longueur</div>
       <div class="card-body">
         <div class="custom-control custom-checkbox">
@@ -221,7 +200,36 @@
       </div>
     </div>
 
-    <img id="map" src='https://raw.githubusercontent.com/lewagon/layouts-demo/gh-pages/images/mapbox.png' width="250">
+    <div class="card-header-body border-light">
+      <div class="card-header">Type de bateau</div>
+      <div class="card-body">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck1">
+          <label class="custom-control-label" for="customCheck1"> Voilier</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck2">
+          <label class="custom-control-label" for="customCheck2"> Bateau à moteur</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck3">
+          <label class="custom-control-label" for="customCheck3"> Catamaran</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck4">
+          <label class="custom-control-label" for="customCheck4"> Semi-rigide</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck5">
+          <label class="custom-control-label" for="customCheck5"> Péniche</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck6">
+          <label class="custom-control-label" for="customCheck6"> Yacht</label>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="announces">
@@ -231,13 +239,13 @@
           <% if boat.photo.attached? %>
             <%= cl_image_tag boat.photo.key, height: 200, width: 400, crop: :fill %>
           <% else %>
-            <img src="/assets/nophoto.png">
+            <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/nophoto_sjcdhs.png">
           <% end %>
           <div class="announce-info">
             <div>
               <h2><%= boat.name %></h2>
               <div class='d-inline-block'>
-                <img src="/assets/iconlocation.png" width='25'>
+                <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/iconlocation_jtobqa.png" width='25'>
               </div>
               <div class='d-inline-block'>
                 <p><%= boat.location %></p>
@@ -264,7 +272,6 @@
   </nav>
 </div>
 
-
 <div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -272,6 +279,6 @@
     <a href="#"><i class="fab fa-twitter"></i></a>
   </div>
   <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at home
+    © 2020 Airbnboat, Inc. Made with <i class="fas fa-heart"></i> at home
   </div>
 </div>
