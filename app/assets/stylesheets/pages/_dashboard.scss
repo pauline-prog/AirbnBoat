@@ -1,0 +1,151 @@
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: -171px;
+}
+
+
+// bloc gauche
+
+.profile {
+  justify-content: center;
+  align-items: center;
+  padding: 335px 50px 335px 50px;
+  background-color: #363636;
+}
+.profile-name {
+  padding-top: 35px;
+  color: white;
+}
+
+
+// bloc droite
+
+.resa-notif-ajout {
+  padding: 280px 50px 200px 50px;
+  margin-top: -170px;
+}
+
+
+// bloc droite haut
+
+.resa-notif {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1050px;
+}
+.resa, .notif {
+  background-color: white;
+  padding: 30px 30px 30px 30px;
+  width: 47%;
+  border-radius: 8px;
+  height: 580px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.resa h5, .notif h5 {
+  font-weight: lighter;
+  color: #4F9CA0;
+}
+
+.scroll {
+  overflow: scroll;
+  height: 480px;
+}
+
+
+// bloc droite bas
+
+.ajout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 1050px;
+  margin-top: 30px;
+  border-radius: 8px;
+  text-decoration: none !important;
+}
+
+
+.btn-ajout {
+  width: 100%;
+  border-radius: 8px;
+  color: white;
+  background-color: #EE5535;
+  padding: 8px 24px;
+  font-weight: lighter;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ajout:hover {
+  opacity: 1;
+  color: white;
+}
+
+
+// resa
+
+.resa-flex {
+  display: flex;
+  align-items: center;
+
+}
+
+#img-resa {
+  border-radius: 50%;
+}
+
+#no-img {
+  border-radius: 50%;
+}
+
+.resa-text-block {
+  padding-left: 20px;
+}
+
+.resa-text {
+  padding-top: 10px;
+  height: 30px;
+}
+
+.resa-icons {
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+// notif
+
+.div-yes-no {
+  display: flex;
+  padding: 20px 0 0 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-no, .btn-yes {
+  border-radius: 25px;
+  color: white;
+  background-color: #363636;
+  padding: 8px 24px;
+  font-weight: lighter;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  margin-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-yes:hover {
+  opacity: 1;
+  color: white;
+  background-color: #85DED8;
+}
+
+.btn-no:hover {
+  opacity: 1;
+  color: white;
+  background-color: #EE6565;
+}

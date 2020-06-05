@@ -28,41 +28,127 @@
   </div>
 </div>
 
-<p>Mes réservations</p>
-<% @bookings.each do |booking| %>
-  <div class="card">
-    <p><%= booking.boat.name %>
-  	  réservé par <%= booking.user.full_name %>
-  	  propriétaire <%= booking.boat.user.full_name %>
-  	  <% days = (booking.end_date.to_date - booking.start_date.to_date).to_i %>
-  	  prix total <%= booking.boat.price_per_day * days %></p>
-    <% if booking.boat.photo.attached? %>
-      <%= cl_image_tag booking.boat.photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  	  <% if booking.accepted %>
-  	   <p>statut: validé</p>
-  	   <% elsif booking.canceled %>
-  	   <p>statut: refusé</p>
-  	   <% else %>
-  	   <p>statut: en attente</p>
-  	   <% end %>
+<div class="dashboard">
 
+  <div class="profile">
+    <div class="profile-img">
+      <img src="/assets/woman.jpg" class="rounded-circle" width="150">
+    </div>
+    <div class="profile-name">
+      <h4><center> <%= current_user.full_name %> </center></h4>
+    </div>
   </div>
-<% end %>
-<p>Mes notifications</p>
-<% @booking_request.each do |booking_r| %>
-    <% if booking_r.canceled == false %>
-  	 <p>Vous avez une nouvelle demande de réservation pour votre bateau <%= booking_r.boat.name %>
-  	  réservé par <%= booking_r.user.full_name %>
-  	  propriétaire <%= booking_r.boat.user.full_name %>
-  	  <% days = (booking_r.end_date.to_date - booking_r.start_date.to_date).to_i %>
-  	  prix total <%= booking_r.boat.price_per_day * days %></p>
-  	  <%= link_to "Confirmer", booking_path(booking_r.id), method: :patch, class: "btn btn-primary" %>
-  	  <%= link_to "Refuser", update_destroy_path(booking_r.id), method: :patch, class: "btn btn-primary" %>
-      <% end %>
-<% end %>
-<br>
-<br>
-<%= link_to "Ajouter une annonce", new_boat_path, class: "btn btn-primary" %>
 
+  <div class="resa-notif-ajout">
 
+    <div class="resa-notif">
+      <div class="resa">
+
+        <h5>MES RÉSERVATIONS</h5>
+        <hr>
+
+        <div class="scroll">
+          <% @bookings.each do |booking| %>
+            <div class="resa-flex">
+              <div class="resa-image">
+                <% if booking.boat.photo.attached? %>
+                  <%= cl_image_tag booking.boat.photo.key, height: 50, width: 50, crop: :fill, id: "img-resa" %>
+                <% else %>
+                  <img src="/assets/nophoto.png" width="50" height="50" class="rounded-circle">
+                <% end %>
+              </div>
+
+              <div class="resa-text-block">
+                <div class="resa-text">
+                  <p><strong><%= booking.boat.name %></strong> - propriétaire <%= booking.boat.user.full_name %></p>
+                </div>
+                <div class="resa-text">
+                  <p>Réservé par <%= booking.user.full_name %>
+                    pour <%= days = (booking.end_date.to_date - booking.start_date.to_date).to_i %> jours -
+                    Prix total : <%= booking.boat.price_per_day * days %> €</p>
+                </div>
+                <div class="resa-text">
+                  <% if booking.accepted %>
+                    <p>Demande <strong>validée</strong></p>
+                  <% elsif booking.canceled %>
+                    <p>Demande <strong>refusée</strong></p>
+                  <% else %>
+                    <p>Demande <strong>en attente</strong></p>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="resa-icons">
+                <% if booking.accepted %>
+                  <img src="assets/ok.png" width="30" height="30">
+                <% elsif booking.canceled %>
+                  <img src="assets/cross.png" width="30" height="30">
+                <% else %>
+                  <img src="assets/clock.png" width="30" height="30">
+                <% end %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="notif">
+
+        <div class="stick">
+          <h5>NOTIFICATIONS</h5>
+          <hr>
+        </div>
+
+        <div class="scroll">
+          <% @booking_request.each do |booking_r| %>
+            <% if booking_r.canceled == false %>
+              <div class="resa-flex">
+                <div class="resa-image">
+                  <img src="/assets/nophoto.png" width="50" height="50" class="rounded-circle">
+                </div>
+                <div class="resa-text-block">
+                  <div class="resa-text">
+                    <p><strong>Nouvelle demande de réservation</strong></p>
+                  </div>
+                  <div class="resa-text">
+                    <p>Pour <strong><%= booking_r.boat.name %></strong> - propriétaire <%= booking_r.boat.user.full_name %></p>
+                  </div>
+                  <div class="resa-text">
+                    <p>Par <%= booking_r.user.full_name %>
+                      pour <%= days = (booking_r.end_date.to_date - booking_r.start_date.to_date).to_i %> jours -
+                      Prix total : <%= booking_r.boat.price_per_day * days %> €</p>
+                  </div>
+                </div>
+              </div>
+              <div class="div-yes-no">
+                <%= link_to "Accepter", booking_path(booking_r.id), method: :patch, class: "btn btn-yes" %>
+                <%= link_to "Refuser", update_destroy_path(booking_r.id), method: :patch, class: "btn btn-no" %>
+              </div>
+              <hr>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ajout">
+      <%= link_to "Ajouter une annonce", new_boat_path, class: "btn btn-ajout" %>
+    </div>
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    © 2020 Airbnboat, Inc. made with <i class="fas fa-heart"></i> at home. 2020
+  </div>
+</div>
