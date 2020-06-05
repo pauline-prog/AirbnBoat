@@ -20,7 +20,7 @@
         <% end %>
       </li>
       <li class="nav-item dropdown">
-        <%= image_tag "woman.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Mon profil", dashboard_path, class: "dropdown-item" %>
           <%= link_to "Mes bateaux", dashboard_path, class: "dropdown-item" %>
@@ -36,7 +36,7 @@
 
   <div class="profile">
     <div class="profile-img">
-      <img src="/assets/woman.jpg" class="rounded-circle" width="150">
+      <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg" class="rounded-circle" width="150">
     </div>
     <div class="profile-name">
       <h4><center> <%= current_user.full_name %> </center></h4>
@@ -58,7 +58,7 @@
                 <% if booking.boat.photo.attached? %>
                   <%= cl_image_tag booking.boat.photo.key, height: 50, width: 50, crop: :fill, id: "img-resa" %>
                 <% else %>
-                  <img src="/assets/nophoto.png" width="50" height="50" class="rounded-circle">
+                  <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/nophoto_sjcdhs.png" width="50" height="50" class="rounded-circle">
                 <% end %>
               </div>
 
@@ -84,11 +84,11 @@
 
               <div class="resa-icons">
                 <% if booking.accepted %>
-                  <img src="assets/ok.png" width="30" height="30">
+                  <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/ok_e6ekvd.png" width="30" height="30">
                 <% elsif booking.canceled %>
-                  <img src="assets/cross.png" width="30" height="30">
+                  <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/cross_kck0wo.png" width="30" height="30">
                 <% else %>
-                  <img src="assets/clock.png" width="30" height="30">
+                  <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/clock_fxz39a.png" width="30" height="30">
                 <% end %>
               </div>
             </div>
@@ -110,7 +110,7 @@
             <% if booking_r.canceled == false %>
               <div class="resa-flex">
                 <div class="resa-image">
-                  <img src="/assets/nophoto.png" width="50" height="50" class="rounded-circle">
+                  <img src="https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352567/nophoto_sjcdhs.png" width="50" height="50" class="rounded-circle">
                 </div>
                 <div class="resa-text-block">
                   <div class="resa-text">
@@ -153,6 +153,6 @@
     <a href="#"><i class="fab fa-twitter"></i></a>
   </div>
   <div class="footer-copyright">
-    © 2020 Airbnboat, Inc. made with <i class="fas fa-heart"></i> at home. 2020
+    © 2020 Airbnboat, Inc. Made with <i class="fas fa-heart"></i> at home
   </div>
 </div>
