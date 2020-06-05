@@ -20,8 +20,14 @@
         <% end %>
       </li>
       <li class="nav-item dropdown">
-        <%= link_to dashboard_path do %>
-          <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large" %>
+        <% if current_user && current_user.photo.attached? %>
+          <%= link_to dashboard_path do %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+           <% end %>
+        <% else %>
+          <%= link_to dashboard_path do %>
+             <%= image_tag "https://res.cloudinary.com/dpwr92z8p/image/upload/v1591352568/woman_u4gpox.jpg", class: "avatar dropdown-toggle avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
         <% end %>
       </li>
     </ul>
