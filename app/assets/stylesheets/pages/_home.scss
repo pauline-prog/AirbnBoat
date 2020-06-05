@@ -21,6 +21,40 @@
   font-weight: medium;
 }
 
+.fhomepage {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px 15px;
+  width: 1200px;
+}
+
+.form-control1 {
+  margin-right: 10px;
+  padding: 7px 140px;
+}
+
+.form-control2 {
+  margin-right: 10px;
+  padding: 7px 118px;
+}
+
+.btn {
+  color: white;
+  padding: 10px 40px;
+  border-radius: 1px;
+  font-weight: 600;
+  background: #FF7F50;
+}
+.btn:hover {
+  opacity: 2;
+  background: #FF6347;
+  text-decoration: none;
+  color: white;
+}
+
+::placeholder {
+
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards, .parent {
